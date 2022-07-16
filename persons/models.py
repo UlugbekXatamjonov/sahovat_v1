@@ -218,7 +218,7 @@ class Family(models.Model):
 	oila_guruhi = models.CharField(max_length=100, choices=EHTIYOJMAND_OILA, verbose_name="Ehtiyojmant oila guruhi")
 	guruh = models.CharField(max_length=100, blank=True, null=True, verbose_name="Guruh")
 	phone = PhoneNumberField(blank=True, null=True, verbose_name="Oila telefon raqami ")
-	vafot_etgan_soni = models.BooleanField(default=False, blank=True, null=True, verbose_name="Vafot etgan soni")
+	vafot_etgan_soni = models.PositiveIntegerField(verbose_name='Vafot etkanlar soni', blank=True, null=True)
 
 	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="famly_cr", blank=True, null=True)
 	created_at = models.DateTimeField(auto_now_add=True)
