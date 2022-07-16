@@ -123,7 +123,7 @@ class AllSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Person
-        fields = ('parent','mfy','ism','familya','sharif','slug','tsana','jins','passport','jshir','phone1',\
+        fields = ('id','parent','mfy','ism','familya','sharif','slug','tsana','jins','passport','jshir','phone1',\
             'phone2','vafot_etgan','manzil','created_by','created_at','status','objects','active', \
 
             # viloyat, tuman, mfy infos

@@ -265,7 +265,7 @@ class TemirdaftarDetail(RetrieveUpdateDestroyAPIView):
         return Person.active.filter()
 
 
-# <--------------------------  TEST     ------------------>
+# <--------------------------  TEST  ------------------>
 
 class TestList(ListCreateAPIView):
     queryset = Person.active.all()
