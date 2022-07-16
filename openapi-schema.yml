@@ -1,0 +1,1802 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /dj-rest-auth/logout/:
+    get:
+      operationId: listLogouts
+      description: 'Calls Django logout method and delete the Token object
+
+        assigned to the current User object.
+
+
+        Accepts/Returns nothing.'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - dj-rest-auth
+    post:
+      operationId: createLogout
+      description: 'Calls Django logout method and delete the Token object
+
+        assigned to the current User object.
+
+
+        Accepts/Returns nothing.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - dj-rest-auth
+  /dj-rest-auth/user/:
+    get:
+      operationId: retrieveUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+      tags:
+      - dj-rest-auth
+    put:
+      operationId: updateUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+      tags:
+      - dj-rest-auth
+    patch:
+      operationId: partialUpdateUserDetails
+      description: 'Reads and updates UserModel fields
+
+        Accepts GET, PUT, PATCH methods.
+
+
+        Default accepted fields: username, first_name, last_name
+
+        Default display fields: pk, username, email, first_name, last_name
+
+        Read-only fields: pk, email
+
+
+        Returns UserModel fields.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+      tags:
+      - dj-rest-auth
+  /account/{id}/:
+    get:
+      operationId: retrieveMyUser
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this my user.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - account
+    put:
+      operationId: updateMyUser
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this my user.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - account
+    patch:
+      operationId: partialUpdateMyUser
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this my user.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - account
+    delete:
+      operationId: destroyMyUser
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this my user.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - account
+  /account/:
+    get:
+      operationId: listMyUsers
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - account
+    post:
+      operationId: createMyUser
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - account
+  /person/toifa/{id}/:
+    get:
+      operationId: retrieveToifa
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this toifa.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Toifa'
+          description: ''
+      tags:
+      - person
+    put:
+      operationId: updateToifa
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this toifa.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Toifa'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Toifa'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Toifa'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Toifa'
+          description: ''
+      tags:
+      - person
+    patch:
+      operationId: partialUpdateToifa
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this toifa.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Toifa'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Toifa'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Toifa'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Toifa'
+          description: ''
+      tags:
+      - person
+    delete:
+      operationId: destroyToifa
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this toifa.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - person
+  /person/toifa/:
+    get:
+      operationId: listToifas
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Toifa'
+          description: ''
+      tags:
+      - person
+    post:
+      operationId: createToifa
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Toifa'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Toifa'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Toifa'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Toifa'
+          description: ''
+      tags:
+      - person
+  /person/tuman/{id}/:
+    get:
+      operationId: retrieveTuman
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tuman.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tuman'
+          description: ''
+      tags:
+      - person
+    put:
+      operationId: updateTuman
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tuman.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tuman'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tuman'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tuman'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tuman'
+          description: ''
+      tags:
+      - person
+    patch:
+      operationId: partialUpdateTuman
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tuman.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tuman'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tuman'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tuman'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tuman'
+          description: ''
+      tags:
+      - person
+    delete:
+      operationId: destroyTuman
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tuman.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - person
+  /person/tuman/:
+    get:
+      operationId: listTumans
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tuman'
+          description: ''
+      tags:
+      - person
+    post:
+      operationId: createTuman
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tuman'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tuman'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tuman'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tuman'
+          description: ''
+      tags:
+      - person
+  /person/sektor/{id}/:
+    get:
+      operationId: retrieveSektor
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this sektor.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sektor'
+          description: ''
+      tags:
+      - person
+    put:
+      operationId: updateSektor
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this sektor.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sektor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Sektor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Sektor'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sektor'
+          description: ''
+      tags:
+      - person
+    patch:
+      operationId: partialUpdateSektor
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this sektor.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sektor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Sektor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Sektor'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sektor'
+          description: ''
+      tags:
+      - person
+    delete:
+      operationId: destroySektor
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this sektor.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - person
+  /person/sektor/:
+    get:
+      operationId: listSektors
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sektor'
+          description: ''
+      tags:
+      - person
+    post:
+      operationId: createSektor
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sektor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Sektor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Sektor'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sektor'
+          description: ''
+      tags:
+      - person
+  /person/mfy/{id}/:
+    get:
+      operationId: retrieveMFY
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this mfy.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFY'
+          description: ''
+      tags:
+      - person
+    put:
+      operationId: updateMFY
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this mfy.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MFY'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MFY'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MFY'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFY'
+          description: ''
+      tags:
+      - person
+    patch:
+      operationId: partialUpdateMFY
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this mfy.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MFY'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MFY'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MFY'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFY'
+          description: ''
+      tags:
+      - person
+    delete:
+      operationId: destroyMFY
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this mfy.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - person
+  /person/mfy/:
+    get:
+      operationId: listMFYs
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MFY'
+          description: ''
+      tags:
+      - person
+    post:
+      operationId: createMFY
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MFY'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MFY'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MFY'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFY'
+          description: ''
+      tags:
+      - person
+  /person/person/{id}/:
+    get:
+      operationId: retrievePerson
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this person.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+          description: ''
+      tags:
+      - person
+    put:
+      operationId: updatePerson
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this person.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Person'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+          description: ''
+      tags:
+      - person
+    patch:
+      operationId: partialUpdatePerson
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this person.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Person'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+          description: ''
+      tags:
+      - person
+    delete:
+      operationId: destroyPerson
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this person.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - person
+  /person/person/:
+    get:
+      operationId: listPersons
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+          description: ''
+      tags:
+      - person
+    post:
+      operationId: createPerson
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Person'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+          description: ''
+      tags:
+      - person
+  /person/yordam_turi/{id}/:
+    get:
+      operationId: retrieveYordam_turi
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this yordam_turi.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Yordam_turi_'
+          description: ''
+      tags:
+      - person
+    put:
+      operationId: updateYordam_turi
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this yordam_turi.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Yordam_turi_'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Yordam_turi_'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Yordam_turi_'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Yordam_turi_'
+          description: ''
+      tags:
+      - person
+    patch:
+      operationId: partialUpdateYordam_turi
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this yordam_turi.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Yordam_turi_'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Yordam_turi_'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Yordam_turi_'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Yordam_turi_'
+          description: ''
+      tags:
+      - person
+    delete:
+      operationId: destroyYordam_turi
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this yordam_turi.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - person
+  /person/yordam_turi/:
+    get:
+      operationId: listYordam_turis
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Yordam_turi_'
+          description: ''
+      tags:
+      - person
+    post:
+      operationId: createYordam_turi
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Yordam_turi_'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Yordam_turi_'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Yordam_turi_'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Yordam_turi_'
+          description: ''
+      tags:
+      - person
+  /person/yordam/{id}/:
+    get:
+      operationId: retrieveYordam
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this yordam.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Yordam'
+          description: ''
+      tags:
+      - person
+    put:
+      operationId: updateYordam
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this yordam.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Yordam'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Yordam'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Yordam'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Yordam'
+          description: ''
+      tags:
+      - person
+    patch:
+      operationId: partialUpdateYordam
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this yordam.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Yordam'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Yordam'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Yordam'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Yordam'
+          description: ''
+      tags:
+      - person
+    delete:
+      operationId: destroyYordam
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this yordam.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - person
+  /person/yordam/:
+    get:
+      operationId: listYordams
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Yordam'
+          description: ''
+      tags:
+      - person
+    post:
+      operationId: createYordam
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Yordam'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Yordam'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Yordam'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Yordam'
+          description: ''
+      tags:
+      - person
+  /dj-rest-auth/registration/:
+    post:
+      operationId: createRegister
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Register'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Register'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Register'
+          description: ''
+      tags:
+      - dj-rest-auth
+  /dj-rest-auth/registration/verify-email/:
+    post:
+      operationId: createVerifyEmail
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyEmail'
+          description: ''
+      tags:
+      - dj-rest-auth
+  /dj-rest-auth/registration/resend-email/:
+    post:
+      operationId: createEmailAddress
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResendEmailVerification'
+          description: ''
+      tags:
+      - dj-rest-auth
+  /dj-rest-auth/password/reset/:
+    post:
+      operationId: createPasswordReset
+      description: 'Calls Django Auth PasswordResetForm save method.
+
+
+        Accepts the following POST parameters: email
+
+        Returns the success/fail message.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordReset'
+          description: ''
+      tags:
+      - dj-rest-auth
+  /dj-rest-auth/password/reset/confirm/:
+    post:
+      operationId: createPasswordResetConfirm
+      description: "Password reset e-mail link is confirmed, therefore\nthis resets\
+        \ the user's password.\n\nAccepts the following POST parameters: token, uid,\n\
+        \    new_password1, new_password2\nReturns the success/fail message."
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordResetConfirm'
+          description: ''
+      tags:
+      - dj-rest-auth
+  /dj-rest-auth/login/:
+    post:
+      operationId: createLogin
+      description: 'Check the credentials and return the REST Token
+
+        if the credentials are valid and authenticated.
+
+        Calls Django Auth login method to register User ID
+
+        in Django session framework
+
+
+        Accept the following POST parameters: username, password
+
+        Return the REST Framework Token Object''s key.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+      tags:
+      - dj-rest-auth
+  /dj-rest-auth/password/change/:
+    post:
+      operationId: createPasswordChange
+      description: 'Calls Django Auth SetPasswordForm save method.
+
+
+        Accepts the following POST parameters: new_password1, new_password2
+
+        Returns the success/fail message.'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordChange'
+          description: ''
+      tags:
+      - dj-rest-auth
+components:
+  schemas:
+    UserDetails:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+\z
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+      required:
+      - username
+    User:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+              readOnly: true
+            username:
+              type: string
+              description: Required. 150 characters or fewer. Letters, digits and
+                @/./+/-/_ only.
+              pattern: ^[\w.@+-]+\z
+              maxLength: 150
+            first_name:
+              type: string
+              maxLength: 150
+            last_name:
+              type: string
+              maxLength: 150
+            email:
+              type: string
+              format: email
+              maxLength: 254
+          required:
+          - username
+        province:
+          type: string
+          maxLength: 50
+        jins:
+          enum:
+          - erkak
+          - ayol
+          type: string
+        tsana:
+          type: string
+          format: date
+        user_photo:
+          type: string
+          format: binary
+          nullable: true
+        city:
+          type: string
+          maxLength: 50
+        address:
+          type: string
+          maxLength: 250
+        phone1:
+          type: string
+          maxLength: 128
+        phone2:
+          type: string
+          nullable: true
+          maxLength: 128
+        passport:
+          type: string
+          maxLength: 15
+        iib:
+          type: string
+          maxLength: 250
+        work_place:
+          type: string
+          maxLength: 200
+        position:
+          type: string
+          maxLength: 100
+        created_by:
+          type: integer
+      required:
+      - user
+      - province
+      - jins
+      - tsana
+      - city
+      - address
+      - phone1
+      - passport
+      - iib
+      - work_place
+      - position
+      - created_by
+    Toifa:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 300
+      required:
+      - name
+    Tuman:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+      required:
+      - name
+    Sektor:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        tuman:
+          type: integer
+      required:
+      - name
+      - tuman
+    MFY:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        tuman:
+          type: integer
+        sektor:
+          type: integer
+      required:
+      - name
+      - tuman
+      - sektor
+    Person:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        ism:
+          type: string
+          maxLength: 100
+        jins:
+          enum:
+          - erkak
+          - ayol
+          type: string
+        tsana:
+          type: string
+          format: date
+        photo:
+          type: string
+          format: binary
+          nullable: true
+        passport:
+          type: string
+          maxLength: 15
+        iib:
+          type: string
+          maxLength: 250
+        phone:
+          type: string
+          maxLength: 128
+        manzil:
+          type: string
+          maxLength: 200
+        work_place:
+          type: string
+          nullable: true
+          maxLength: 200
+        position:
+          type: string
+          nullable: true
+          maxLength: 100
+        file:
+          type: string
+          format: binary
+          nullable: true
+        image:
+          type: string
+          format: binary
+          nullable: true
+        oila_azolari:
+          type: integer
+          nullable: true
+        ishsizlar:
+          type: integer
+          nullable: true
+        bandlar:
+          type: integer
+          nullable: true
+        izoh:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        toifa:
+          type: integer
+        tuman:
+          type: integer
+        sektor:
+          type: integer
+        mfy:
+          type: integer
+        created_by:
+          type: integer
+      required:
+      - ism
+      - jins
+      - tsana
+      - passport
+      - iib
+      - phone
+      - manzil
+      - toifa
+      - tuman
+      - sektor
+      - mfy
+      - created_by
+    Yordam_turi_:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    Yordam:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        sabab:
+          type: string
+          nullable: true
+          maxLength: 200
+        summa:
+          type: integer
+          nullable: true
+        boshqa_yordam:
+          type: string
+          nullable: true
+          maxLength: 300
+        tuman:
+          type: integer
+        sektor:
+          type: integer
+        mfy:
+          type: integer
+        person:
+          type: integer
+        turi:
+          type: integer
+      required:
+      - tuman
+      - sektor
+      - mfy
+      - person
+      - turi
+    Register:
+      type: object
+      properties:
+        username:
+          type: string
+          maxLength: 150
+          minLength: 1
+        email:
+          type: string
+          format: email
+        password1:
+          type: string
+          writeOnly: true
+        password2:
+          type: string
+          writeOnly: true
+      required:
+      - username
+      - password1
+      - password2
+    VerifyEmail:
+      type: object
+      properties:
+        key:
+          type: string
+      required:
+      - key
+    ResendEmailVerification:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+    PasswordReset:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    PasswordResetConfirm:
+      type: object
+      properties:
+        new_password1:
+          type: string
+          maxLength: 128
+        new_password2:
+          type: string
+          maxLength: 128
+        uid:
+          type: string
+        token:
+          type: string
+      required:
+      - new_password1
+      - new_password2
+      - uid
+      - token
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+      required:
+      - password
+    PasswordChange:
+      type: object
+      properties:
+        new_password1:
+          type: string
+          maxLength: 128
+        new_password2:
+          type: string
+          maxLength: 128
+      required:
+      - new_password1
+      - new_password2
