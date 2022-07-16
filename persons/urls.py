@@ -48,6 +48,8 @@ urlpatterns = [
 	
 	path('temir/', TemirdaftarList.as_view()),
 	
+	path('test/', TestList.as_view()),
+
 	 
 	
 

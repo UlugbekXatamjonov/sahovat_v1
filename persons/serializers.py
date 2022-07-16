@@ -45,15 +45,20 @@ class FamilySerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 
-class TashkilotSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tashkilot
-        fields = ('__all__')
 
 class Tash_FaoliyatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tash_Faoliyat
         fields = ('__all__')
+
+class TashkilotSerializer(serializers.ModelSerializer):
+    tashkilot_faoliyat = Tash_FaoliyatSerializer(many=True)
+    class Meta:
+        model = Tashkilot
+        fields = ('__all__')
+
+
+
 
 
 class IshliSerializer(serializers.ModelSerializer):
@@ -111,8 +116,8 @@ class AllSerializer(serializers.ModelSerializer):
     person_fayl = FaylSerializer(many=True, read_only=True)
 
     # tashkilot = YordamSerializer(many=True, read_only=True)
-    # tashkilot = YordamSerializer(source='name', many=True)
-    tashkilot = YordamSerializer(many=True, read_only=True)
+    # tashkilot = YordamSerializer(write_only=True)
+    # tashkilot = YordamSerializer(many=True, read_only=True)
     # name = serializers.SerializerMethodField()
 
 
@@ -128,7 +133,12 @@ class AllSerializer(serializers.ModelSerializer):
 
             'family_info','ishli_person','ishsiz_person','person_qaror','person_yordam',\
             'person_photo','person_fayl',\
-            'tashkilot')
+            )
+
+    # def create(self, validated_data):
+    #     tashkilot_data = validated_data.pop('tashkilot')
+    #     Tashkilot.objects.create(**tashkilot_data)
+    #     return super().create(validated_data)
             
     # def get_name(self, Tashkilot):
     #     name = Tashkilot.objects.all()
@@ -145,6 +155,19 @@ class Temirdaftar(serializers.ModelSerializer):
         fields = ('parent','mfy','ism','familya','sharif','slug','tsana','jins','passport','jshir','phone1',\
             'phone2','manzil','created_by','created_at','status','objects','active','parent')
 
+
+
+# class LikeSerializer(serializers.ModelSerializer):
+#     book = BookSerializer(write_only=True)
+
+#     class Meta:
+#         model = Like 
+#         fields = '__all__'
+
+#     def create(self, validated_data):
+#         book_data = validated_data.pop('book')
+#         Book.objects.create(**book_data)
+#         return super().create(validated_data)
 
 
     # class AccountSerializer (serializers.ModelSerializer):
@@ -168,3 +191,20 @@ class Temirdaftar(serializers.ModelSerializer):
 
     #         return serializer.data
 
+
+
+class TestSerializer(serializers.ModelSerializer):
+    tashkilot = YordamSerializer(read_only=True)
+
+    class Meta:
+        model = Person
+        fields = ('parent','mfy','ism','familya','sharif','slug','tsana','jins','passport','jshir','phone1',\
+            'phone2','vafot_etgan','manzil','created_by','created_at','status',
+
+            'tashkilot')
+
+
+    # def create(self, validated_data):
+    #     tashkilot_data = validated_data.pop('tashkilot')
+    #     Tashkilot.objects.create(**tashkilot_data)
+    #     return super().create(validated_data)

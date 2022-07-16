@@ -2,6 +2,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from accounts.models import MyUser
 from autoslug import AutoSlugField
+# django-autoslug==1.9.8
 
 # Create your models here.
 
