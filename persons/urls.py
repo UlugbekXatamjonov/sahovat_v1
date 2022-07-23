@@ -26,9 +26,6 @@ urlpatterns = [
 	path('tashkilot/<slug:slug>/<int:pk>/', TashkilotDetail.as_view()),
 	path('tashkilot/', TashkilotList.as_view()),
 
-	path('tash-faoliyat/<slug:slug>/<int:pk>/', Tash_FaoliyatDetail.as_view()),
-	path('tash-faoliyat/', Tash_FaoliyatList.as_view()),
-
 	path('ishli/<slug:slug>/<int:pk>/', IshliDetail.as_view()),
 	path('ishli/', IshliList.as_view()),
 
@@ -41,16 +38,11 @@ urlpatterns = [
 	path('yordam/<slug:slug>/<int:pk>/', YordamDetail.as_view()),
 	path('yordam/', YordamList.as_view()),
 	
+	path('kompleks/<int:pk>/', KompleksDetail.as_view()),
+	path('kompleks/', KompleksList.as_view()),
+	
 
 	path('all/<int:pk>/', AllSerializerDetailView.as_view()),
 	path('all/', AllSerializerListView.as_view()),
 	
-	
-	path('temir/', TemirdaftarList.as_view()),
-	
-	path('test/', TestList.as_view()),
-
-	 
-	
-
 ]

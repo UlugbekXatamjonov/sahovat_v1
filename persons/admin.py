@@ -4,6 +4,7 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Viloyat)
+admin.site.register(Kompleks)
 
 @admin.register(Tuman)
 class TumanAdmin(admin.ModelAdmin):
@@ -39,7 +40,7 @@ class FamilyAdmin(admin.ModelAdmin):
 
 @admin.register(Tashkilot)
 class TashkilotAdmin(admin.ModelAdmin):
-	list_display = ('stir',)
+	list_display = ('name','faoliyat_turi','stir',)
 	list_filter = ('created_at','status')
 
 @admin.register(Ishli)
@@ -61,10 +62,3 @@ class QarorAdmin(admin.ModelAdmin):
 class YordamAdmin(admin.ModelAdmin):
 	list_display = ('person','korxona','created_at','created_by')
 	list_filter = ('created_at','created_by')
-
-@admin.register(Tash_Faoliyat)
-class Tash_FaoliyatAdmin(admin.ModelAdmin):
-	list_display = ('name', 'faoliyat_turi')
-
-
-	

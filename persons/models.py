@@ -26,8 +26,6 @@ SEKTOR=(
 	('2','2'),
 	('3','3'),
 	('4','4'),
-	('5','5'),
-	('6','6'),
 )
 
 
@@ -166,9 +164,6 @@ class Person(models.Model):
 	def __str__(self):
 		return self.ism
 
-	# def get_absolute_url(self):
-	# 	return reverse('person:person_detail', args=[self.id])
-
 
 	def str(self):
 	    full_path = [self.ism]
@@ -178,11 +173,7 @@ class Person(models.Model):
 	      k = k.parent
 	    return ' -> '.join(full_path[::-1])
 
-	# @property
-	# def get_photo(self):
-	# 	return self.photo_person.all()
-
-
+	
 class Photo(models.Model):
 	person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="person_photo")
 	slug = AutoSlugField(populate_from='person')
@@ -236,35 +227,22 @@ class Tashkilot(models.Model):
 	name = models.CharField(max_length=250,blank=True, null=True,  verbose_name="Ish beruvchi tashkilot")
 	slug = AutoSlugField(populate_from='name')
 	stir  = models.PositiveIntegerField(blank=True, null=True, verbose_name="Tashkilot STIR raqami")
-	loyiha = models.PositiveIntegerField(verbose_name="Tashkilot loyihalari soni")
-	ish_orni = models.PositiveIntegerField(verbose_name="Tashkilot yaratgan ish o'rni")
-
-	created_at = models.DateTimeField(auto_now_add=True)
-
-	status = models.CharField(max_length=20, choices=STATUS, default='active', verbose_name="Holati")
-	objects = models.Manager()
-	active = ActiveManager()
-
-	def __str__(self):
-		return self.name
-
-
-class Tash_Faoliyat(models.Model):
-	name = models.ForeignKey(Tashkilot, on_delete=models.CASCADE, related_name="tashkilot_faoliyat")
 	faoliyat_turi = models.CharField(max_length=200, choices=FAOLIYAT_TURI ,verbose_name="korxona faoliyat turi")
-	slug = AutoSlugField(populate_from='faoliyat_turi')
-	loyiha = models.PositiveIntegerField(verbose_name="Faoliyat bo'yicha yaratilgan loyihalar soni")
-	ish_orni = models.PositiveIntegerField("Faoliyat bo'yicha yaratilgan ish o'rinlari soni")
+	loyiha = models.PositiveIntegerField(verbose_name="Tashkilot loyihalari soni", blank=True, null=True)
+	ish_orni = models.PositiveIntegerField(verbose_name="Tashkilot yaratgan ish o'rni", blank=True, null=True)
 
-	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="tashkilot_cr", verbose_name="Malumot kirituvchi")
 	created_at = models.DateTimeField(auto_now_add=True)
-
+	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="tashkilot_cr", verbose_name="Malumot kirituvchi")
+	
 	status = models.CharField(max_length=20, choices=STATUS, default='active', verbose_name="Holati")
 	objects = models.Manager()
 	active = ActiveManager()
 
+
+
+
 	def __str__(self):
-		return self.name.name
+		return f"{self.name}"
 
 
 class Ishli(models.Model):
@@ -322,6 +300,15 @@ class Qaror(models.Model):
 	def __str__(self):
 		return self.person.ism
 
+	# def save_model(self, request, obj, form, change):
+	# 	if getattr(obj, 'author',None) is None:    # <---- 1 ->
+	# 		obj.author = request.user
+
+		# if not obj.created_by:      # <---- 2 ->
+		# 	obj.created_by = request.users
+		
+		# obj.save()
+
 
 class Yordam(models.Model):
 	# Oilaga ko'rsatilgan yordam  
@@ -347,4 +334,13 @@ class Yordam(models.Model):
 	def __str__(self):
 		return self.person.ism
 
+class Kompleks(models.Model):
+	name = models.CharField(max_length=100, verbose_name="Kompleksga bog'langan shaxs")
 
+	status = models.CharField(max_length=20, choices=STATUS, default='active', verbose_name="Holati")
+	objects = models.Manager()
+	active = ActiveManager()
+
+
+	def __str__(self):
+		return self.name

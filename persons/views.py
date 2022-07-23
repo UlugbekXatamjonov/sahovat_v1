@@ -172,21 +172,6 @@ class TashkilotDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
         return Tashkilot.active.filter()
 
 
-class Tash_FaoliyatList(ListCreateAPIView):
-    queryset = Tash_Faoliyat.active.all()
-    serializer_class = Tash_FaoliyatSerializer
-
-    def get_queryset(self):
-        return Tash_Faoliyat.active.filter()
-
-class Tash_FaoliyatDetail(RetrieveUpdateDestroyAPIView):
-    queryset = Tash_Faoliyat.active.all()
-    serializer_class = Tash_FaoliyatSerializer
-
-    def get_queryset(self):
-        return Tash_Faoliyat.active.filter()
-
-
 class IshliList(ListCreateAPIView):
     queryset = Ishli.active.all()
     serializer_class = IshliSerializer
@@ -250,29 +235,19 @@ class YordamDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
         return Yordam.active.filter()
 
 
-class TemirdaftarList(ListCreateAPIView):
-    queryset = Person.active.all()
-    serializer_class = Temirdaftar
+class KompleksList(ListCreateAPIView):
+    queryset = Kompleks.active.all()
+    serializer_class =KompleksSerializer
 
     def get_queryset(self):
-        return Person.active.filter()
+        return Kompleks.active.filter() 
 
-class TemirdaftarDetail(RetrieveUpdateDestroyAPIView):
-    queryset = Person.active.all()
-    serializer_class = Temirdaftar
+class KompleksDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
+    queryset = Kompleks.active.all()
+    serializer_class =KompleksSerializer 
+    lookup_fields = ['pk']
 
     def get_queryset(self):
-        return Person.active.filter()
+        return Kompleks.active.filter()
 
-
-# <--------------------------  TEST  ------------------>
-
-class TestList(ListCreateAPIView):
-    queryset = Person.active.all()
-    serializer_class = TestSerializer
-
-class TestDetail(RetrieveUpdateDestroyAPIView):
-    queryset = Person.active.all()
-    serializer_class = TestSerializer
- 
 
