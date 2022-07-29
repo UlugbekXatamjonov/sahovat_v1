@@ -224,6 +224,8 @@ class Family(models.Model):
 
 
 class Tashkilot(models.Model):
+	tuman = models.ForeignKey(Tuman, on_delete=models.CASCADE, related_name="tashkilot_mfy", verbose_name="Tuman") 
+	mfy = models.ForeignKey(MFY, on_delete=models.CASCADE, related_name="tashkilot_mfy", verbose_name="MFY")
 	name = models.CharField(max_length=250,blank=True, null=True,  verbose_name="Ish beruvchi tashkilot")
 	slug = AutoSlugField(populate_from='name')
 	stir  = models.PositiveIntegerField(blank=True, null=True, verbose_name="Tashkilot STIR raqami")
@@ -237,9 +239,6 @@ class Tashkilot(models.Model):
 	status = models.CharField(max_length=20, choices=STATUS, default='active', verbose_name="Holati")
 	objects = models.Manager()
 	active = ActiveManager()
-
-
-
 
 	def __str__(self):
 		return f"{self.name}"
