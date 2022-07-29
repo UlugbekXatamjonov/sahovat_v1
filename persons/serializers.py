@@ -47,9 +47,28 @@ class FamilySerializer(serializers.ModelSerializer):
 
 
 class TashkilotSerializer(serializers.ModelSerializer):
+    tuman_id = serializers.CharField(source='mfy.tuman.id')
+    tuman_viloyat = serializers.CharField(source='mfy.tuman.viloyat')
+    tuman_sektor = serializers.CharField(source='mfy.tuman.sektor')
+    tuman_shaxs = serializers.CharField(source='mfy.tuman.shaxs')
+    tuman_name = serializers.CharField(source='mfy.tuman.name')
+    tuman_slug = serializers.CharField(source='mfy.tuman.slug')
+    tuman_status = serializers.CharField(source='mfy.tuman.status')
+
+    mfy_id = serializers.CharField(source='mfy.id')
+    mfy_tuman = serializers.CharField(source='mfy.tuman')
+    mfy_sektor = serializers.CharField(source='mfy.sektor')
+    mfy_shaxs = serializers.CharField(source='mfy.shaxs')
+    mfy_name = serializers.CharField(source='mfy.name')
+    mfy_slug = serializers.CharField(source='mfy.slug')
+    mfy_status = serializers.CharField(source='mfy.status')
+
     class Meta:
         model = Tashkilot
-        fields = ('__all__')
+        fields = ('mfy_id','mfy_tuman','mfy_sektor','mfy_shaxs','mfy_name','mfy_slug','mfy_status',\
+            'tuman_id','tuman_viloyat','tuman_sektor','tuman_shaxs','tuman_name','tuman_slug','tuman_status',\
+            'name','slug','faoliyat_turi','loyiha','ish_orni','created_at','created_by','status'
+        )
 
 
 class IshliSerializer(serializers.ModelSerializer):
