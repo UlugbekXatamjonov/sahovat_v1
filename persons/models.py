@@ -322,6 +322,8 @@ class Yordam(models.Model):
 	yordam_turi = models.CharField(max_length=250, choices=YORDAM_TURI, verbose_name="Yordam turi")
 	summa = models.PositiveIntegerField(blank=True, null=True, verbose_name="Yordam summasi")
 	izoh = models.TextField(blank=True, null=True, verbose_name="Izoh")
+	fayl = models.FileField(upload_to='yordam_fayli/%Y/%m/%d/')
+	# photo = models.ImageField(upload_to='yordam_rasmi/%Y/%m/%d/')
 
 	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="yordam_cr")
 	created_at = models.DateTimeField(auto_now_add=True)
