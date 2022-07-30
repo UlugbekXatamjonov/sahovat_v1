@@ -136,8 +136,9 @@ class MFY(models.Model):
 
 class Person(models.Model):
 	# Shahs haqida malumot
-	parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, blank = True, null=True,  verbose_name="Oila boshlig'i")
+	tuman = models.ForeignKey(Tuman, on_delete=models.CASCADE, related_name="person_tuman", verbose_name="Tuman")
 	mfy = models.ForeignKey(MFY, on_delete=models.CASCADE, related_name="person_mfy", verbose_name="MFY")
+	parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, blank = True, null=True,  verbose_name="Oila boshlig'i")
 
 	ism = models.CharField(max_length=100, verbose_name="Ism")
 	familya = models.CharField(max_length=100,  verbose_name="Familya")
@@ -238,8 +239,8 @@ class Tashkilot(models.Model):
 	
 	status = models.CharField(max_length=20, choices=STATUS, default='active', verbose_name="Holati")
 	objects = models.Manager()
-	active = ActiveManager()
 
+	active = ActiveManager()
 	def __str__(self):
 		return f"{self.name}"
 
