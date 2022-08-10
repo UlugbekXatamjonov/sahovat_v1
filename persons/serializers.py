@@ -47,6 +47,13 @@ class FamilySerializer(serializers.ModelSerializer):
 
 
 class TashkilotSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tashkilot
+        fields = ('__all__')
+
+
+
+class TashkilotSeeSerializer(serializers.ModelSerializer):
     tuman_id = serializers.CharField(source='mfy.tuman.id')
     tuman_viloyat = serializers.CharField(source='mfy.tuman.viloyat')
     tuman_sektor = serializers.CharField(source='mfy.tuman.sektor')
@@ -90,9 +97,14 @@ class QarorSerializer(serializers.ModelSerializer):
 
 
 class YordamSerializer(serializers.ModelSerializer):
+    yordam_turi = serializers.StringRelatedField()
+
     class Meta:
         model = Yordam
-        fields = ('__all__')
+        fields = ('id','person','slug','yordam_sanasi','korxona','vakil_fio','yuridik','phone',
+            'summa','izoh','fayl','created_at','created_by','tekshirildi','status',
+            'yordam_turi')
+
 
 
 class KompleksSerializer(serializers.ModelSerializer):
@@ -143,4 +155,7 @@ class AllSerializer(serializers.ModelSerializer):
             'family_info','ishli_person','ishsiz_person','person_qaror','person_yordam',\
             'person_photo','person_fayl',\
             )
+
+
+
 

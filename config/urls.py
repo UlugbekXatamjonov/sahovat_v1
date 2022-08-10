@@ -48,7 +48,7 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-radoc'),
 
-    path('account/', include('accounts.urls')),
+    # path('account/', include('accounts.urls')),
     path('person/', include('persons.urls'), name='person'),
 ]
 if settings.DEBUG:

@@ -99,6 +99,7 @@ class PersonList(ListCreateAPIView):
     def get_queryset(self):
         return Person.active.filter()
 
+    
 
 class PersonDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
     queryset = Person.active.all()
@@ -148,6 +149,7 @@ class FamilyList(ListCreateAPIView):
     def get_queryset(self):
         return Family.active.filter()
 
+    
 class FamilyDetail( RetrieveUpdateDestroyAPIView):
     queryset = Family.active.all()
     serializer_class = FamilySerializer
@@ -156,6 +158,8 @@ class FamilyDetail( RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return Family.active.filter()
 
+    
+
 class TashkilotList(ListCreateAPIView):
     queryset = Tashkilot.objects.all()
     serializer_class = TashkilotSerializer
@@ -163,6 +167,7 @@ class TashkilotList(ListCreateAPIView):
     def get_queryset(self):
         return Tashkilot.active.filter()
 
+    
 class TashkilotDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
     queryset = Tashkilot.objects.all()
     serializer_class = TashkilotSerializer
@@ -172,12 +177,32 @@ class TashkilotDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
         return Tashkilot.active.filter()
 
 
+class TashkilotSeeList(ListCreateAPIView):
+    queryset = Tashkilot.objects.all()
+    serializer_class = TashkilotSeeSerializer
+
+    def get_queryset(self):
+        return Tashkilot.active.filter()
+
+    
+class TashkilotSeeDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
+    queryset = Tashkilot.objects.all()
+    serializer_class = TashkilotSeeSerializer
+    lookup_fields = ['slug','pk']
+
+    def get_queryset(self):
+        return Tashkilot.active.filter()
+
+    
+
 class IshliList(ListCreateAPIView):
     queryset = Ishli.active.all()
     serializer_class = IshliSerializer
 
     def get_queryset(self):
         return Ishli.active.filter()
+
+    
 
 class IshliDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
     queryset = Ishli.active.all()
@@ -187,6 +212,8 @@ class IshliDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return Ishli.active.filter()
 
+    
+
 
 class IshsizList(ListCreateAPIView):
     queryset = Ishsiz.active.all()
@@ -194,6 +221,8 @@ class IshsizList(ListCreateAPIView):
 
     def get_queryset(self):
         return Ishsiz.active.filter()
+
+    
 
 class IshsizDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
     queryset = Ishsiz.active.all()
@@ -203,6 +232,8 @@ class IshsizDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return Ishsiz.active.filter()
 
+    
+
 
 class QarorList(ListCreateAPIView):
     queryset = Qaror.active.all()
@@ -210,6 +241,8 @@ class QarorList(ListCreateAPIView):
 
     def get_queryset(self):
         return Qaror.active.filter()
+
+    
 
 class QarorDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
     queryset = Qaror.active.all()
@@ -219,12 +252,15 @@ class QarorDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return Qaror.active.filter()
 
+    
 class YordamList(ListCreateAPIView):
     queryset = Yordam.active.all()
     serializer_class =YordamSerializer
 
     def get_queryset(self):
-        return Yordam.active.filter() 
+        return Yordam.active.filter()
+
+    
 
 class YordamDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
     queryset = Yordam.active.all()
@@ -233,6 +269,8 @@ class YordamDetail(MultipleFieldLookupMixin, RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return Yordam.active.filter()
+
+    
 
 
 class KompleksList(ListCreateAPIView):

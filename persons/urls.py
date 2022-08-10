@@ -14,17 +14,20 @@ urlpatterns = [
 	path('person/<slug:slug>/<int:pk>/', PersonDetail.as_view(), name='person_detail'),
 	path('person/', PersonList.as_view()),
 
-	path('photo/<slug:slug>/<int:pk>/', PhotoDetail.as_view()),
-	path('photo/', PhotoList.as_view()),
+	# path('photo/<slug:slug>/<int:pk>/', PhotoDetail.as_view()),
+	# path('photo/', PhotoList.as_view()),
 
-	path('fayl/<slug:slug>/<int:pk>/', FaylDetail.as_view()),
-	path('fayl/', FaylList.as_view()),
+	# path('fayl/<slug:slug>/<int:pk>/', FaylDetail.as_view()),
+	# path('fayl/', FaylList.as_view()),
 
 	path('family/<slug:slug>/<int:pk>/', FamilyDetail.as_view()),
 	path('family/', FamilyList.as_view()),	
 
 	path('tashkilot/<slug:slug>/<int:pk>/', TashkilotDetail.as_view()),
 	path('tashkilot/', TashkilotList.as_view()),
+
+	path('tashkilotsee/<slug:slug>/<int:pk>/', TashkilotSeeDetail.as_view()),
+	path('tashkilotsee/', TashkilotSeeList.as_view()),
 
 	path('ishli/<slug:slug>/<int:pk>/', IshliDetail.as_view()),
 	path('ishli/', IshliList.as_view()),

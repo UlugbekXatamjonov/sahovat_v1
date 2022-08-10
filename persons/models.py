@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from accounts.models import MyUser
+from django.contrib.auth.models import User
 from autoslug import AutoSlugField
 # django-autoslug==1.9.8
 
@@ -11,8 +11,8 @@ from autoslug import AutoSlugField
 STATUS = (
 	('active','Active'),
 	('arxiv','Arxiv'),
-	('delete','Delete'),
 )
+
 
 
 TOIFA = (
@@ -148,13 +148,13 @@ class Person(models.Model):
 	jins = models.CharField(max_length=20, choices=JINS, verbose_name="Jinsi")
 	passport = models.CharField(max_length=15, verbose_name="Passport raqami")
 	jshir  = models.PositiveIntegerField(blank=True, null=True, verbose_name="JSHIR")
-	phone1 = PhoneNumberField(blank=True, null=True, verbose_name="Telefon raqam 2")
-	phone2 = PhoneNumberField(blank=True, null=True, verbose_name="Telefon raqam 1")
+	phone1 = PhoneNumberField(blank=True, null=True, verbose_name="Telefon raqam 1")
+	phone2 = PhoneNumberField(blank=True, null=True, verbose_name="Telefon raqam 2")
 	manzil = models.CharField(max_length=200, blank=True, null=True, verbose_name="Manzil")
 	kochib_ketgan = models.BooleanField(default=False, blank=True, null=True, verbose_name="Boshqa hududga ko'chib ketgan")
 	vafot_etgan = models.BooleanField(default=False, blank=True, null=True, verbose_name="Vafot etgan")
 	
-	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="person_cr", blank=True, null=True)
+	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="person_cr", blank=True, null=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 
 	tekshirildi = models.BooleanField(default=False, verbose_name="Tekshirilganlik holati")
@@ -213,7 +213,7 @@ class Family(models.Model):
 	phone = PhoneNumberField(blank=True, null=True, verbose_name="Oila telefon raqami ")
 	vafot_etgan_soni = models.PositiveIntegerField(verbose_name='Vafot etkanlar soni', blank=True, null=True)
 
-	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="famly_cr", blank=True, null=True)
+	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="famly_cr", blank=True, null=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 
 	status = models.CharField(max_length=20, choices=STATUS, default='active')
@@ -235,7 +235,7 @@ class Tashkilot(models.Model):
 	ish_orni = models.PositiveIntegerField(verbose_name="Tashkilot yaratgan ish o'rni", blank=True, null=True)
 
 	created_at = models.DateTimeField(auto_now_add=True)
-	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="tashkilot_cr", verbose_name="Malumot kirituvchi")
+	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tashkilot_cr", verbose_name="Malumot kirituvchi")
 	
 	status = models.CharField(max_length=20, choices=STATUS, default='active', verbose_name="Holati")
 	objects = models.Manager()
@@ -251,9 +251,10 @@ class Ishli(models.Model):
 	tashkilot = models.ForeignKey(Tashkilot, on_delete=models.CASCADE,related_name="ishli_tashkilot", blank=True, null=True ,verbose_name="Ish beruvchi tashkilot")
 	faoliyat_turi = models.CharField(max_length=200, choices=FAOLIYAT_TURI ,verbose_name="korxona faoliyat turi")
 	sana = models.DateField(verbose_name="Ishga joylashgan sana")
+	shartnoma = models.PositiveIntegerField(verbose_name="Shartnoma raqami", null=True, blank=True)
 	band_qilish = models.CharField(max_length=200, verbose_name="O'zini o'zi band qilish turi", blank=True, null=True)
 
-	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="ishli_cr", verbose_name="Malumot kirituvchi")
+	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ishli_cr", verbose_name="Malumot kirituvchi")
 	created_at = models.DateTimeField(auto_now_add=True)
 
 	status = models.CharField(max_length=20, choices=STATUS, default='active', verbose_name="Holati")
@@ -269,7 +270,7 @@ class Ishsiz(models.Model):
 	slug = AutoSlugField(populate_from='person')
 	faoliyat_turi = models.CharField(max_length=200, choices=FAOLIYAT_TURI ,verbose_name="Ishlash istagidagi faoliy turi")
 
-	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="ishsiz_cr",  verbose_name="Malumot kirituvchi")
+	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ishsiz_cr",  verbose_name="Malumot kirituvchi")
 	created_at = models.DateTimeField(auto_now_add=True)
 
 	status = models.CharField(max_length=20, choices=STATUS, default='active', verbose_name="Holati")
@@ -289,8 +290,9 @@ class Qaror(models.Model):
 	qaror_raqami = models.CharField(max_length=30, verbose_name="Qaror raqami")
 	qaror_sanasi = models.DateField(verbose_name="Qaror sanasi")
 	qaror_fayli = models.FileField(upload_to='qaror_fayli/%Y/%m/%d/', verbose_name="Qaror fayli")
+	sabab = models.TextField(blank=True,null=True)
 
-	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="qaror_cr", verbose_name="Malumot kirituvchi")
+	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="qaror_cr", verbose_name="Malumot kirituvchi")
 	created_at = models.DateTimeField(auto_now_add=True)
 
 	status = models.CharField(max_length=20, choices=STATUS, default='active', verbose_name="Holati")
@@ -325,7 +327,7 @@ class Yordam(models.Model):
 	fayl = models.FileField(upload_to='yordam_fayli/%Y/%m/%d/')
 	# photo = models.ImageField(upload_to='yordam_rasmi/%Y/%m/%d/')
 
-	created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="yordam_cr")
+	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="yordam_cr")
 	created_at = models.DateTimeField(auto_now_add=True)
 	
 	tekshirildi = models.BooleanField(default=False, verbose_name="Tekshirilganlik holati")

@@ -8,30 +8,30 @@ admin.site.register(Kompleks)
 
 @admin.register(Tuman)
 class TumanAdmin(admin.ModelAdmin):
-	list_display = ('viloyat','sektor','name')
+	list_display = ('name','viloyat','sektor')
 	list_filter = ('viloyat','sektor')
 
 @admin.register(MFY)
 class MFYAdmin(admin.ModelAdmin):
-	list_display = ('tuman','sektor','name')
+	list_display = ('name','tuman','sektor')
 	list_filter = ('tuman','sektor')
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-	list_display = ('parent','mfy','ism','familya','passport','jshir',\
+	list_display = ('ism','parent','mfy','familya','passport','jshir',\
 	'created_at','created_by')
 	list_filter = ('mfy','created_at','created_by')
 	search_fields = ('ism','familya','manzil')
 
-@admin.register(Photo)
-class PhotoAdmin(admin.ModelAdmin):
-	list_display = ('person','photo','created_at')
-	list_filter = ('created_at',)
+# @admin.register(Photo)
+# class PhotoAdmin(admin.ModelAdmin):
+# 	list_display = ('person','photo','created_at')
+# 	list_filter = ('created_at',)
 
-@admin.register(Fayl)
-class FaylAdmin(admin.ModelAdmin):
-	list_display = ('person','fayl','created_at')
-	list_filter = ('fayl','created_at')
+# @admin.register(Fayl)
+# class FaylAdmin(admin.ModelAdmin):
+# 	list_display = ('person','fayl','created_at')
+# 	list_filter = ('fayl','created_at')
 
 @admin.register(Family)
 class FamilyAdmin(admin.ModelAdmin):
